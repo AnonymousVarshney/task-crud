@@ -1,5 +1,10 @@
 package com.task.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+
 import java.time.LocalDate;
 
 public class Task {
@@ -9,7 +14,17 @@ public class Task {
 
     private String description;
     private StatusEnum status;
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate deadline;
+
+    public Task(Integer id, String title, String description, StatusEnum status, LocalDate deadline) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.status = status;
+        this.deadline = deadline;
+    }
 
     public Integer getId() {
         return id;

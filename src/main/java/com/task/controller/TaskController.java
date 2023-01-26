@@ -1,5 +1,6 @@
 package com.task.controller;
 
+import com.task.concurrency.Concurrency;
 import com.task.model.Task;
 import com.task.service.TaskServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,17 +23,17 @@ public class TaskController {
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     Task createTask(@RequestBody Task task) {
-       return taskService.createTask(task);
+        return Concurrency.protect(()->taskService.createTask(task));
     }
 
     @GetMapping("/get/{id}")
     Task findTask(@PathVariable Integer id) {
-        return taskService.returnTaskById(id);
+        return Concurrency.protect(()->taskService.returnTaskById(id));
     }
 
     @PutMapping("/update")
     Task saveOrUpdateTask(@RequestBody Task task) {
-        return taskService.updateTask(task);
+        return Concurrency.protect(()->taskService.updateTask(task));
     }
 
     @DeleteMapping("/delete/{id}")
