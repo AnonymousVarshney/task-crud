@@ -8,6 +8,7 @@ Pre-requisites :
 
 3. Go to main folder in which pom.xml is located :
 
+```text
 mvn spring-boot:run
 This starts the server at port 8080 and CRUD API's are hosted
 
@@ -41,10 +42,9 @@ http://localhost:8080/rest/tasks/update
 
 DELETE TASK (DELETE) :
 http://localhost:8080/rest/tasks/delete/{id}
-
+```
 4. For status field valid values :
    "pending", "inprogress", or "completed"
 
-5. 
 
 
