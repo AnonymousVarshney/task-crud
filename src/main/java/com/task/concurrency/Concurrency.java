@@ -6,7 +6,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Supplier;
 
 /*
-Can act as a rate limiter
+Can act as a rate limiter with 50 requests or some number of requests allowed as per thread pool
  */
 public class Concurrency {
 
